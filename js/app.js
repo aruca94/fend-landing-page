@@ -55,25 +55,27 @@
         generateButtons();
     };
 
-
 // add event listener to the body/ document/ page something
 // to look for the sections and then run the below function
     const generateButtons = () => {
-        let howMany = document.getElementsByClassName('landing__container').length;
-        for(let i = 0; i < howMany; i++) {
-        let sectionNum = i + 1;
-        const headerNav = document.createElement('li');
-        headerNav.setAttribute('id', `section ${sectionNum}`);
-        const headerButton = document.createElement('button');
-        const texxt = document.createTextNode(`Section ${sectionNum}`);
-        headerNav.appendChild(headerButton);
-        headerButton.appendChild(texxt);
-        let placement = document.getElementById('navbar__list');
-        placement.appendChild(headerNav);
-        };
+            const navBarUl = document.getElementById("navbar__list");
+        for (let i = 1; i <= 4; i++) {
+            const newLi = document.createElement("li");
+            //Create the A so the html looks like <li><a></a></li>
+            const newA = document.createElement("a");
+            //Adding the A to the li
+            newLi.appendChild(newA);
+            //Adding the href so it links to the sections with the id
+            newA.setAttribute("href", "#section" + i);
+            newA.innerText = "Section " + i;
+            //appending everything to the nav bar
+            navBarUl.appendChild(newLi);
+          }
     };
 
-
+    // set anchor for buttons to scroll smoothly
+    const btn = document.getElementsByTagName('button');
+   
 
 
 
@@ -99,8 +101,8 @@
 
 
     const sections = document.getElementsByTagName('section');
-        document.addEventListener('scroll', () => {
-
+        document.addEventListener('scroll', (e) => {
+            e.preventDefault();
     // loop over sections
         for (let section of sections) {
             const bounding = section.getBoundingClientRect();
@@ -119,12 +121,6 @@
 
 
 // start scroll-to-section
-
-
-    document.addEventListener('click', () => {
-        
-    })
-
 
 //end sccroll-to-section
 

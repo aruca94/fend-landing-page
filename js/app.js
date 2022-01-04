@@ -37,20 +37,22 @@
 
 // build the nav
 
+//get html section length
+// store in a variable
+// can be individually selected with [0 or 1 etc]
+
+
+
+
+
 //find element you want to dynamically add content to
 //store said element in a variable
 //create text node and put text inside it
 //append text node to element
 //append element to tag
-    const createButton = () => {
-        const headerNav = document.createElement('li');
-        headerNav.setAttribute('class', 'section');
-        const headerButton = document.createElement('button');
-        const texxt = document.createTextNode('Im a button');
-        headerNav.appendChild(headerButton);
-        headerButton.appendChild(texxt);
-        let placement = document.getElementById('navbar__list');
-        placement.appendChild(headerNav);
+
+    window.onload = () => {
+        generateButtons();
     };
 
 
@@ -59,13 +61,21 @@
     const generateButtons = () => {
         let howMany = document.getElementsByClassName('landing__container').length;
         for(let i = 0; i < howMany; i++) {
-            createButton();
+        let sectionNum = i + 1;
+        const headerNav = document.createElement('li');
+        headerNav.setAttribute('id', `section ${sectionNum}`);
+        const headerButton = document.createElement('button');
+        const texxt = document.createTextNode(`Section ${sectionNum}`);
+        headerNav.appendChild(headerButton);
+        headerButton.appendChild(texxt);
+        let placement = document.getElementById('navbar__list');
+        placement.appendChild(headerNav);
         };
     };
 
-    window.onload = () => {
-        generateButtons();
-    };
+
+
+
 
 
     function addOrRemoveActiveClass(){
@@ -96,7 +106,7 @@
             const bounding = section.getBoundingClientRect();
             if (bounding.top <= 150 && bounding.bottom >= 150) {
                 section.classList.add('your-active-class');
-                addOrRemoveActiveClass(section.id);
+                addOrRemoveActiveClass();
             } else {
                 if (section.classList.contains('your-active-class')) {
                     section.classList.remove('your-active-class');
@@ -106,12 +116,17 @@
         }
     });
 
-// check to see if it is in viewport
 
 
+// start scroll-to-section
 
 
-    // end event listeners for section detection
+    document.addEventListener('click', () => {
+        
+    })
+
+
+//end sccroll-to-section
 
 //build navigation menu
 // add functionality to distinguish the section in view

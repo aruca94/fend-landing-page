@@ -54,13 +54,15 @@
     window.onload = () => {
         generateButtons();
     };
-
+        
 // add event listener to the body/ document/ page something
 // to look for the sections and then run the below function
     const generateButtons = () => {
-            const navBarUl = document.getElementById("navbar__list");
+        const navBarUl = document.getElementById("navbar__list");
         for (let i = 1; i <= 4; i++) {
             const newLi = document.createElement("li");
+            //new
+            newLi.setAttribute('class', 'section' + i);
             //Create the A so the html looks like <li><a></a></li>
             const newA = document.createElement("a");
             //Adding the A to the li
@@ -73,6 +75,8 @@
           }
     };
 
+
+
     // set anchor for buttons to scroll smoothly
     const btn = document.getElementsByTagName('button');
    
@@ -80,25 +84,9 @@
 
 
 
-    function addOrRemoveActiveClass(){
-        const menuElements = document.getElementsByClassName("menu__link");
-        for (menu of menuElements){
-            if (menu.getAttribute('data-link') == sectionId){
-                menu.classList.add("active");
-            } else {
-                if (menu.classList.contains("active")){
-                    menu.classList.remove("active");
-                }
-            }
-        }
-    }
-
-
-
 
 
     // start event listeners for section detection
-
 
     const sections = document.getElementsByTagName('section');
         document.addEventListener('scroll', (e) => {
@@ -107,16 +95,21 @@
         for (let section of sections) {
             const bounding = section.getBoundingClientRect();
             if (bounding.top <= 150 && bounding.bottom >= 150) {
+                const id = section.getAttribute("id");
+                document.querySelector(`.${id}`).classList.add("active");
                 section.classList.add('your-active-class');
-                addOrRemoveActiveClass();
             } else {
-                if (section.classList.contains('your-active-class')) {
+                    const id = section.getAttribute("id");
+                    document.querySelector(`.${id}`).classList.remove("active");
                     section.classList.remove('your-active-class');
-                }
             }
+            //new
 
-        }
+         //end new
+        };
     });
+
+
 
 
 

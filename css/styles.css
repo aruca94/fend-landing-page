@@ -92,6 +92,8 @@ section {
     transition: ease 0.3s all;
 }
 
+
+
 /* Header Styles */
 .page__header {
     background: #fff;
@@ -224,4 +226,23 @@ section.your-active-class .landing__container::after {
 		           translate(-1em) 
 		           rotate(-360deg);
 	}
+}
+
+li {
+    padding-right: .7em;
+}
+
+li:hover {
+    background: black;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color:black;
+    font-size: 1.1em;
+}
+
+a:hover {
+    color: white;
 }

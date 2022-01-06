@@ -2,8 +2,14 @@
 # Udacity front-end web dev nanodegree project
 
 ## Table of Contents
+
+    - Dependencies
     - Description
     - Comments
+
+### Dependencies
+
+None
 
 ### Description
 

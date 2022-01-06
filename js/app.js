@@ -54,12 +54,12 @@
     window.onload = () => {
         generateButtons();
     };
-        
+        const sections = document.getElementsByTagName('section');
 // add event listener to the body/ document/ page something
 // to look for the sections and then run the below function
     const generateButtons = () => {
         const navBarUl = document.getElementById("navbar__list");
-        for (let i = 1; i <= 4; i++) {
+        for (let i = 1; i <= sections.length; i++) {
             const newLi = document.createElement("li");
             //new
             newLi.setAttribute('class', 'section' + i);
@@ -74,21 +74,9 @@
             navBarUl.appendChild(newLi);
           }
     };
-
-
-
-    // set anchor for buttons to scroll smoothly
-    const btn = document.getElementsByTagName('button');
-   
-
-
-
-
-
-
     // start event listeners for section detection
 
-    const sections = document.getElementsByTagName('section');
+
         document.addEventListener('scroll', (e) => {
             e.preventDefault();
     // loop over sections
@@ -106,7 +94,7 @@
             //new
 
          //end new
-        };
+        }
     });
 
 

@@ -106,12 +106,13 @@ section {
 /* Footer Styles */
 .page__footer {
     background: #000;
-    padding: 3em;
+    padding: 1em;
     color: #fff;
 }
 
 .page__footer p{
     color: #fff;
+    text-align: center;
 }
 
 
@@ -228,14 +229,20 @@ section.your-active-class .landing__container::after {
 	}
 }
 
+
+
 li {
     padding-right: .7em;
 }
+
 
 li:hover {
     background: black;
     color: white;
 }
+
+
+
 
 a {
     text-decoration: none;
@@ -246,3 +253,7 @@ a {
 a:hover {
     color: white;
 }
+
+.active {
+    background: #f0f0f0;
+};

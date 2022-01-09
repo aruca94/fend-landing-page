@@ -8,33 +8,39 @@
 */
 // Global functions start
 const sections = document.getElementsByTagName('section');
-// Global functions end
-    window.onload = () => {
-        generateButtons();
-    };
+const links = document.getElementsByClassName('.menu__link');
+const list = document.getElementsByTagName('li');
 
-// dynamically build nav links start
-    const generateButtons = () => {
-        const navBarList = document.getElementById('navbar__list');
-        for (let i = 1; i <= sections.length; i++) {
-            const newLi = document.createElement('li');
-            //new
-            newLi.setAttribute('class', 'section' + i);
-            //Create the A so the html looks like <li><a></a></li>
-            const newA = document.createElement('a');
-            //Adding the A to the li
-            newLi.appendChild(newA);
-            //Adding the href so it links to the sections with the id
-            newA.setAttribute('href', '#section' + i);
-            newA.innerText = 'Section ' + i;
-            //appending everything to the nav bar
-            navBarList.appendChild(newLi);
-          }
-    };
+// Global functions end
+const generateButtons = () => {
+    const navBarList = document.getElementById("navbar__list");
+    for (section of sections) {
+      const newLi = document.createElement("li");
+      newLi.setAttribute("class", `${section.id}`);
+      //Create the A so the html looks like <li><a></a></li>
+      const newA = document.createElement("a");
+      //Adding the A to the li
+      newLi.appendChild(newA);
+      //Adding the href so it links to the sections with the id
+      newA.innerText = `${section.dataset.nav}`;
+      //appending everything to the nav bar
+      navBarList.appendChild(newLi);
+      scroll(newLi, section);
+    }
+  };
+  window.onload = () => {
+    generateButtons();
+  };
+  // create a smooth scroll function
+  function scroll(clickedElement, scrolledElement) {
+    clickedElement.addEventListener("click", function (e) {
+      e.preventDefault();
+      scrolledElement.scrollIntoView({ behavior: "smooth" });
+    });
+  }
 // dynamically build nav links end
 // section detection and nav active state with event listener start
-        document.addEventListener('scroll', (e) => {
-            e.preventDefault();
+        document.addEventListener('scroll', () => {
         for (let section of sections) {
             const bounding = section.getBoundingClientRect();
             if (bounding.top <= 150 && bounding.bottom >= 150) {
@@ -48,4 +54,3 @@ const sections = document.getElementsByTagName('section');
             }
         }
     });
-// section detection and nav active state with event listener end
